@@ -13,6 +13,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 require('./app/routing/apiRoutes')(app);
 require('./app/routing/htmlRoutes')(app);
 
-app.listen(PORT, function() {
+app.listen(process.env.PORT, function() {
 	console.log('Listening on PORT: ' + PORT);
 })
