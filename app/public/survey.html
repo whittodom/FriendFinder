@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder - Express</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+   <form> 
+    <div class="form-group col-auto">
+      <h2>Survey Questions</h2>
+      <hr>
+
+      <h4>Name (Required)</h4>
+      <input type="text" id="name" class="form-control" required>
+
+      <h4>Link to Photo (Required)</h4>
+      <input type="text" id="photo" class="form-control" required>
+
+      <hr>
+
+      <h3><strong>Question 1</strong></h3>
+      <h4>You love to travel</h4>
+      <select class="user-choice" id="q1">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+      <h3><strong>Question 2</strong></h3>
+      <h4>You prefer reading a good book to watching tv</h4>
+      <select class="user-choice" id="q2">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h3><strong>Question 3</strong></h3>
+      <h4>You rarely cook your own dinner</h4>
+      <select class="user-choice" id="q3">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h3><strong>Question 4</strong></h3>
+      <h4>You easily relate to other people's feelings</h4>
+      <select class="user-choice" id="q4">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h3><strong>Question 5</strong></h3>
+      <h4>You would describe yourself as 'laid back'</h4>
+      <select class="user-choice" id="q5">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h3><strong>Question 6</strong></h3>
+      <h4>You are an extrovert, and feel more energetic after spending time with friends</h4>
+      <select class="user-choice" id="q6">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h3><strong>Question 7</strong></h3>
+      <h4>You are always looking to make new friends</h4>
+      <select class="user-choice" id="q7">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+      <h3><strong>Question 8</strong></h3>
+      <h4>Dogs are better than cats</h4>
+      <select class="user-choice" id="q8">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+      <h3><strong>Question 9</strong></h3>
+      <h4>The Demogorgon would beat Drogon in a fight</h4>
+      <select class="user-choice" id="q9">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+      <h3><strong>Question 10</strong></h3>
+      <h4>Dipping fries in a Wendy's chocolate shake is delicious</h4>
+      <select class="user-choice" id="q10">
+  		<option value=""></option>
+  		<option value="1">1 (Strongly Disagree)</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5 (Strongly Agree)</option>
+      </select>
+
+      <br>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn"><i class="fa fa-check-circle" aria-hidden="true"></i>
+       Submit</button>
+
+      <hr>
+    </div>
+   <form>     
+
+  <!-- Modal -->
+  <div id="match-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title"><strong>Best Friend Match</strong></h2>
+        </div>
+        <div class="modal-body">
+          <h2 id="best-friend-name"></h2>
+          <img id="best-friend-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="Best Friend Image">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>  
+
+<script type="text/javascript">
+    $("#submit-btn").on("click", function(event) {
+      event.preventDefault();
+
+      var friendSurvey = {
+        name: $("#name").val().trim(),
+        photo: $("#photo").val().trim(),
+        scores: [
+          $("#q1").val().trim(),
+          $("#q2").val().trim(),
+          $("#q3").val().trim(),
+          $("#q4").val().trim(),
+          $("#q5").val().trim(),
+          $("#q6").val().trim(),
+          $("#q7").val().trim(),
+          $("#q8").val().trim(),
+          $("#q9").val().trim(),
+          $("#q10").val().trim()
+        ]
+      };   
+      console.log(friendSurvey);
+
+      // AJAX post the data to the friends API.
+      $.post("/api/friends", friendSurvey, function(data) {
+          if (data) {
+            $("#best-friend-name").text(data.name);
+            $("#best-friend-img").attr("src", data.photo);
+
+            // Display best friend in modal
+            $("#match-modal").modal("toggle");      
+          } else {
+            return alert("Sorry! Please fill out the entire survey!");
+          }
+
+          // Clear form
+          $("#best-friend-name").val("");
+          $("#best-friend-image").val("");
+      });
+    } 
+
+</script>
